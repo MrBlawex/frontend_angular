@@ -1,1 +1,15 @@
-<p>auth works!</p>
+<form [formGroup]="authForm" novalidate (ngSubmit)="submit()">
+    <div class="form_group">
+        <label for="login">Login </label>
+        <input class="form-control" type="text" name="login" placeholder="Введите логин" formControlName="login">
+        <div class="alert" *ngIf="authForm.controls['login'].invalid && authForm.controls['login'].touched">Ошибка логина</div>
+    </div>
+    <div class="form_group">
+        <label for="password">Password</label>
+        <input type="text" name="password" placeholder="Введите пароль" formControlName="password">
+        <div class="alert" *ngIf="authForm.controls['password'].invalid && authForm.controls['password'].touched">Ошибка пароля</div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="authForm.invalid" type="submit">OK</button>
+    </div>
+</form>
