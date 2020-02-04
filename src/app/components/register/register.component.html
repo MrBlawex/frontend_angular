@@ -1,0 +1,13 @@
+<form [formGroup]="regForm" (ngSubmit)="submit()">
+    <div class="reg-group">
+        <label for="email">Email</label><br>
+        <input type="text" class="reg-control" name="email" placeholder="Enter email" formControlName="email">
+    </div>
+    <div class="reg-group">
+        <label for="password">Password</label><br>
+        <input type="text" class="reg-control" name="password" placeholder="Enter password" formControlName="password">
+    </div>
+    <div class="reg-group">
+        <button type="submit">Отправить</button>
+    </div>
+</form>

@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductsAddComponent } from './components/products-add/products-add.component';
+import { RegisterComponent } from './components/register/register.component'
 
 
 
@@ -16,7 +17,8 @@ import { ProductsAddComponent } from './components/products-add/products-add.com
     AppComponent,
     AuthComponent,
     ProductsListComponent,
-    ProductsAddComponent
+    ProductsAddComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

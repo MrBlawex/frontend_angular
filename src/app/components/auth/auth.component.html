@@ -1,11 +1,11 @@
 <form [formGroup]="authForm" novalidate (ngSubmit)="submit()">
     <div class="form_group">
-        <label for="login">Login </label>
+        <label for="login">Login </label><br>
         <input class="form-control" type="text" name="login" placeholder="Введите логин" formControlName="login">
         <div class="alert" *ngIf="authForm.controls['login'].invalid && authForm.controls['login'].touched">Ошибка логина</div>
     </div>
     <div class="form_group">
-        <label for="password">Password</label>
+        <label for="password">Password</label><br>
         <input type="text" name="password" placeholder="Введите пароль" formControlName="password">
         <div class="alert" *ngIf="authForm.controls['password'].invalid && authForm.controls['password'].touched">Ошибка пароля</div>
     </div>
