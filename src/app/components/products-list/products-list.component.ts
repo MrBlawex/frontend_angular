@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsListComponent implements OnInit {
 
+  prod1: Product = {
+    name: "car",
+    price: 214321
+  }
+  prod2: Product = {
+    name: "phone",
+    price: 852
+  }
+  arrayOfProducts: Array<Product> = [this.prod1,this.prod2];
+
   constructor() { }
 
   ngOnInit() {
