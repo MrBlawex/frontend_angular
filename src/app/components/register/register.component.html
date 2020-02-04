@@ -1,4 +1,4 @@
-<form [formGroup]="regForm" (ngSubmit)="submit()">
+<form [formGroup]="regForm" novalidate>
     <div class="reg-group">
         <label for="email">Email</label><br>
         <input type="text" class="reg-control" name="email" placeholder="Enter email" formControlName="email">
@@ -8,6 +8,6 @@
         <input type="text" class="reg-control" name="password" placeholder="Enter password" formControlName="password">
     </div>
     <div class="reg-group">
-        <button type="submit">Отправить</button>
+        <button type="submit" (click)="submit({'email': regForm.controls['email'], 'password': regForm.controls['password']})">Отправить</button>
     </div>
 </form>
