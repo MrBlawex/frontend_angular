@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
 
 @Injectable()
-export class User{
-    email:string;
-    password:string;
+export class UsersList{
+    users = [];
 
-    constructor(private http:HttpClient){ }
+    addUser(user){
+        this.users.push(user);
+        let jsn = JSON.stringify(this.users);
+        console.log(jsn);
+        
+    }
 
-    postUserInfo(user:User){
-        this.http.post('./userInfo.json', user)
+    getUsers(){
+        return this.users;
     }
 }

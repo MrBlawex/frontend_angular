@@ -12,4 +12,7 @@
     <div class="form-group">
         <button [disabled]="authForm.invalid" type="submit">OK</button>
     </div>
+
+    <p>UserList</p>
+    <div *ngFor="let user of users">{{user.email}}</div>
 </form>

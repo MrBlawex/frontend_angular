@@ -10,7 +10,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductsAddComponent } from './components/products-add/products-add.component';
 import { RegisterComponent } from './components/register/register.component'
-import { User } from './user.service'
+import { UsersList } from './user.service';
 
 
 
@@ -29,7 +29,7 @@ import { User } from './user.service'
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [User],
+  providers: [UsersList],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
