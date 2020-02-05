@@ -12,11 +12,7 @@ import { ProductsAddComponent } from './components/products-add/products-add.com
 import { RegisterComponent } from './components/register/register.component'
 import { UsersList } from './user.service';
 
-
-
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProductService } from './services/product.service';
-import { Mate}
 
 @NgModule({
   declarations: [
