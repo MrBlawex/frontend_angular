@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsersList } from 'src/app/user.service';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
     template:'app-register',

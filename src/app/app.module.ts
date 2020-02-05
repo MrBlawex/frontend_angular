@@ -13,6 +13,8 @@ import { RegisterComponent } from './components/register/register.component'
 import { UsersList } from './user.service';
 
 import { ProductService } from './services/product.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ProductService } from './services/product.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [UsersList, ProductService],
   bootstrap: [AppComponent]

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 
-
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class UsersList{
-    public users = [];
+    private users = [];
 
     addUser(user){
         this.users.push(user);
