@@ -1,1 +1,7 @@
-<p>products-add works!</p>
+<section>
+    <form (ngSubmit)="submit()" [formGroup]="form">
+        <input type="text" formControlName="curName"  placeholder="Название продукта">
+        <input type="text" formControlName="curPrice" placeholder="Цена продукта">
+        <button type="submit" [disabled]="form.invalid">Добавить продукт</button>
+    </form>
+</section>

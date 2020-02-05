@@ -7,6 +7,10 @@ import { AuthComponent } from './components/auth/auth.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductsAddComponent } from './components/products-add/products-add.component';
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ProductService } from './services/product.service';
+import { Mate}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +20,12 @@ import { ProductsAddComponent } from './components/products-add/products-add.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
