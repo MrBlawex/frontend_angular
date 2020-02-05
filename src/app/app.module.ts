@@ -14,6 +14,10 @@ import { UsersList } from './user.service';
 
 
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ProductService } from './services/product.service';
+import { Mate}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +33,7 @@ import { UsersList } from './user.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [UsersList],
+  providers: [UsersList, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
