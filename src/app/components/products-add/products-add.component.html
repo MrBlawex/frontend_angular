@@ -1,7 +1,17 @@
 <section>
-    <form (ngSubmit)="submit()" [formGroup]="form">
-        <input type="text" formControlName="curName"  placeholder="Название продукта">
-        <input type="text" formControlName="curPrice" placeholder="Цена продукта">
-        <button type="submit" [disabled]="form.invalid">Добавить продукт</button>
-    </form>
+  <form (ngSubmit)="submit()" [formGroup]="form">
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        formControlName="curName"
+        placeholder="Название продукта"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput formControlName="curPrice" placeholder="Цена продукта" />
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="form.invalid">
+      Добавить продукт
+    </button>
+  </form>
 </section>

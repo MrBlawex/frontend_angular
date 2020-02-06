@@ -12,7 +12,7 @@ export class AuthComponent{
   authForm: FormGroup;
   users;
 
-  constructor(private fromBuild:FormBuilder, private userList: UsersList) { 
+  constructor(private fromBuild: FormBuilder, private userList: UsersList) { 
     this.authForm = fromBuild.group({
       'login': ["", [Validators.required, Validators.maxLength(255), Validators.minLength(6), Validators.pattern("^[a-zA-Z][0-9a-zA-Z]*")]],
       'password': ["", [Validators.required, Validators.maxLength(255), Validators.minLength(10)]]

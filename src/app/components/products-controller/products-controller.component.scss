@@ -1,0 +1,14 @@
+.parent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.child1 {
+  width: 50%;
+}
+.child2 {
+  width: 50%;
+}
+mat-card {
+  margin: 8px;
+}
