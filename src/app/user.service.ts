@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 
+@Injectable({
+    providedIn: 'root'
+})
+export class UsersService{
+    private users = [];
 
-@Injectable()
-export class UsersList{
-    public users = [];
-
-    addUser(user){
+    public postRequestUser(user){
         this.users.push(user);
     }
-
-    getUsers(){
+    
+    public getUsers(){
         return this.users;
     }
 }

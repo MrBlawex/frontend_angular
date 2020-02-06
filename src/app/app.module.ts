@@ -10,7 +10,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { ProductsListComponent } from './components/products-table/products-table.component';
 import { ProductsAddComponent } from './components/products-add/products-add.component';
 import { RegisterComponent } from './components/register/register.component'
-import { UsersList } from './user.service';
+import { UsersService } from './user.service';
 
 import { ProductService } from './services/product.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -54,7 +54,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     MatCardModule,
     MatBottomSheetModule
   ],
-  providers: [UsersList, ProductService],
+  providers: [UsersService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
