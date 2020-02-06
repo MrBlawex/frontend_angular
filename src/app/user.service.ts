@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 @Injectable({
     providedIn: 'root'
 })
-export class UsersList{
+export class UsersService{
     private users = [];
 
-    addUser(user){
+    public postRequestUser(user){
         this.users.push(user);
     }
-
-    getUsers(){
+    
+    public getUsers(){
         return this.users;
     }
 }

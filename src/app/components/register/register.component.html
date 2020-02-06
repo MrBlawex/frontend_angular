@@ -8,6 +8,14 @@
         <input type="text" class="reg-control" name="password" placeholder="Enter password" formControlName="password">
     </div>
     <div class="reg-group">
-        <button type="submit" (click)="submit()" mat-button color="warn">Отправить</button>
+        <label for="fname">Name</label><br>
+        <input type="text" name="fname" placeholder="Enter name" formControlName="firstName">
+    </div>
+    <div class="reg-group">
+        <label for="surname">Surname</label><br>
+        <input type="text" name="surname" placeholder="Enter surname" fromControlName="surname">
+    </div>
+    <div class="reg-group">
+        <button type="submit" (click)="submit()" mat-button>Отправить</button>
     </div>
 </form>

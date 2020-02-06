@@ -10,7 +10,8 @@
         <div class="alert" *ngIf="authForm.controls['password'].invalid && authForm.controls['password'].touched">Ошибка пароля</div>
     </div>
     <div class="form-group">
-        <button [disabled]="authForm.invalid" type="submit">OK</button>
+        <button [disabled]="authForm.invalid" type="submit" (click)="login()">OK</button>
+        <button (click)="logout()">Logout</button>
     </div>
 
     <p>UserList</p>

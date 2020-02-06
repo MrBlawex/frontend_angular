@@ -10,11 +10,13 @@ import { AuthComponent } from './components/auth/auth.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductsAddComponent } from './components/products-add/products-add.component';
 import { RegisterComponent } from './components/register/register.component'
-import { UsersList } from './user.service';
+import { UsersService } from './user.service';
 
 import { ProductService } from './services/product.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
     AuthComponent,
     ProductsListComponent,
     ProductsAddComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,9 +33,11 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    MatMenuModule,
   ],
-  providers: [UsersList, ProductService],
+  providers: [UsersService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
