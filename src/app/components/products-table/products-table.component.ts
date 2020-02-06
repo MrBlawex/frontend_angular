@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './products-table.component.html',
   styleUrls: ['./products-table.component.scss']
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsTableComponent implements OnInit {
 
   public displayedColumns: string[] = ['name', 'price', 'control'];
   public productsArr = new MatTableDataSource<IProduct>(this._productService.products);
@@ -20,5 +20,7 @@ export class ProductsListComponent implements OnInit {
   ngOnInit() {
     this.productsArr.paginator = this.paginator;
   }
+
+
 
 }

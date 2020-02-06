@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './components/auth/auth.component';
-import { ProductsListComponent } from './components/products-table/products-table.component';
+import { ProductsTableComponent } from './components/products-table/products-table.component';
 import { ProductsAddComponent } from './components/products-add/products-add.component';
 import { RegisterComponent } from './components/register/register.component'
 import { UsersService } from './user.service';
@@ -31,7 +31,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
   declarations: [
     AppComponent,
     AuthComponent,
-    ProductsListComponent,
+    ProductsTableComponent,
     ProductsAddComponent,
     RegisterComponent,
     ProductsControllerComponent,

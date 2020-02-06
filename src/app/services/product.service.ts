@@ -8,7 +8,15 @@ export class ProductService {
 
   public products: IProduct[] = [];
 
-  constructor() { }
+  constructor() {
+    this._init();
+  }
+
+  private _init(){
+    for (let i = 0; i < 500; i++){
+      this.products.push({name: 'fsafafas', price: i});
+    }
+  }
   
   public addProducts(prod:IProduct){
       this.products.push(prod);

@@ -15,7 +15,7 @@ export class ProductsAddComponent implements OnInit {
   constructor(private _productService: ProductService) { }
 
   ngOnInit() {
-    this.form = new FormGroup({curName: new FormControl('', Validators.required), curPrice: new FormControl('', Validators.required)})
+    this.form = new FormGroup({curName: new FormControl('', Validators.required), curPrice: new FormControl('', [Validators.required, Validators.min(0)])})
   }
 
   submit(){
