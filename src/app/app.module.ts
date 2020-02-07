@@ -36,7 +36,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     RegisterComponent,
     ProductsControllerComponent,
     HeaderComponent,
-    ProductStatsComponent
+    ProductStatsComponent,
     ],
   imports: [
     BrowserModule,
