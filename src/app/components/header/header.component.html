@@ -1,19 +1,30 @@
-<mat-toolbar>
-  <button 
-  color="accent" 
-  class="authButton" 
-  mat-raised-button 
-  (click)="openBottomSheet()" 
-  [routerLink]="['/login']"
-  *ngIf="!authService.getIsLogin()">
-  Войти</button>
+<mat-toolbar color="primary">
+  <span>Table View </span>
 
-  <button 
-  mat-raised-button
-  color="accent"
-  class="authButton"
-  [routerLink]="['/login']"
-  *ngIf="authService.getIsLogin()"
-  (click)="logout()">
-  Выйти</button>
+  
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="space"></span>
+
+  <button
+    color="accent"
+    class="authButton"
+    mat-raised-button
+    (click)="openBottomSheet()"
+    [routerLink]="['/login']"
+    *ngIf="!authService.getIsLogin()"
+  >
+    Войти
+  </button>
+
+  <button
+    mat-raised-button
+    color="accent"
+    class="authButton"
+    [routerLink]="['/login']"
+    *ngIf="authService.getIsLogin()"
+    (click)="logout()"
+  >
+    Выйти
+  </button>
 </mat-toolbar>
