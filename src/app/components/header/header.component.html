@@ -1,3 +1,19 @@
 <mat-toolbar>
-  <button mat-button color="accent" class="authButton" mat-raised-button (click)="openBottomSheet()" [routerLink]="['/login']">Войти</button>
+  <button 
+  color="accent" 
+  class="authButton" 
+  mat-raised-button 
+  (click)="openBottomSheet()" 
+  [routerLink]="['/login']"
+  *ngIf="!authService.getIsLogin()">
+  Войти</button>
+
+  <button 
+  mat-raised-button
+  color="accent"
+  class="authButton"
+  [routerLink]="['/login']"
+  *ngIf="authService.getIsLogin()"
+  (click)="logout()">
+  Выйти</button>
 </mat-toolbar>

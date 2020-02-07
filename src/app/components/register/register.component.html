@@ -1,21 +1,29 @@
 <form [formGroup]="regForm" novalidate>
-    <div class="reg-group">
-        <label for="email">Email</label><br>
-        <input type="text" class="reg-control" name="email" placeholder="Enter email" formControlName="email">
+    <div class="auth-info">
+        <h1>Регистрация</h1>
+        <p>На данной странице вы сможете зарегистрироваться на нашем сайте.</p>
     </div>
     <div class="reg-group">
-        <label for="password">Password</label><br>
-        <input type="text" class="reg-control" name="password" placeholder="Enter password" formControlName="password">
+        <mat-form-field>
+            <input matInput type="text" class="reg-control" name="email" placeholder="Enter email" formControlName="email">
+        </mat-form-field>
     </div>
     <div class="reg-group">
-        <label for="fname">Name</label><br>
-        <input type="text" name="fname" placeholder="Enter name" formControlName="firstName">
+        <mat-form-field>
+            <input matInput type="text" class="reg-control" name="password" placeholder="Enter password" formControlName="password">
+        </mat-form-field>
     </div>
     <div class="reg-group">
-        <label for="surname">Surname</label><br>
-        <input type="text" name="surname" placeholder="Enter surname" fromControlName="surname">
+        <mat-form-field>
+            <input matInput type="text" name="fname" placeholder="Enter name" formControlName="firstName">
+        </mat-form-field>
     </div>
     <div class="reg-group">
-        <button type="submit" (click)="submit()" mat-button>Отправить</button>
+        <mat-form-field>
+            <input matInput type="text" name="fname" placeholder="Enter qwert" formControlName="fullName">
+        </mat-form-field>
+    </div>
+    <div class="reg-group">
+        <button mat-raised-button type="submit" (click)="submit()" mat-button>зарегистрироваться</button>
     </div>
 </form>

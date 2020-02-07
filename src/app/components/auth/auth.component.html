@@ -1,23 +1,21 @@
 <form [formGroup]="authForm" novalidate (submit)="submit()">
+    <div class="auth-info">
+        <h1>Авторизация</h1>
+        <p>На данной странице вы сможете авторизоваться на нашем сайте.</p>
+    </div>
     <div class="form_group">
-        <mat-form-field color="accent">
-            <!-- <label for="login">Login </label><br> -->
-            <input matInput class="form-control" type="text" name="login" placeholder="Введите логин" formControlName="login">
-            <!-- <div class="alert" *ngIf="authForm.controls['login'].invalid && authForm.controls['login'].touched">Ошибка логина</div> -->
+        <mat-form-field>
+            <input matInput class="form-control" type="text" placeholder="Введите логин" formControlName="login">
         </mat-form-field>
     </div>
     <div class="form_group">
         <mat-form-field>
-            <!-- <label for="password">Password</label><br> -->
-            <input matInput type="password" name="password" placeholder="Введите пароль" formControlName="password">
-            <!-- <div class="alert" *ngIf="authForm.controls['password'].invalid && authForm.controls['password'].touched">Ошибка пароля</div> -->
+            <input matInput type="password" placeholder="Введите пароль" formControlName="password">
         </mat-form-field>
     </div>
     <div class="form-group">
-        <button [disabled]="authForm.invalid" type="submit" (click)="login()">OK</button>
-        <button (click)="logout()">Logout</button>
+        <button mat-raised-button class="btn-submit" [disabled]="authForm.invalid" type="submit" (click)="login()">Вход</button>
+        <!-- <a [routerLink]="['/register']">Зарегестрировать новый аккунт</a> -->
+        <button mat-raised-button color="accent" [routerLink]="['/register']">Зарегестрироваться</button>
     </div>
-
-    <p>UserList</p>
-    <div *ngFor="let user of users">{{user.email}}</div>
 </form>

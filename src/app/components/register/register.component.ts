@@ -17,11 +17,12 @@ export class RegisterComponent{
             'email': ["", [Validators.required, Validators.email]],
             'password': ["", [Validators.required, Validators.maxLength(255), Validators.minLength(6)]],
             'firstName': ["", Validators.required],
-            'surname': ["", Validators.required]
+            'fullName': ["", Validators.required],
         })
     }
 
     submit(){
+        console.log(this.regForm.controls['fullName'].value);
         this.userService.postRequestUser(this.regForm.value);
         console.log(this.userService.getUsers());
     }
