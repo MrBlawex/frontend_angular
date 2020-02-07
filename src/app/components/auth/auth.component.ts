@@ -16,7 +16,7 @@ export class AuthComponent{
 
   constructor(private fromBuild:FormBuilder, private userService: UsersService, private authService:AuthService, private router: Router) { 
     this.authForm = fromBuild.group({
-      'login': ["", [Validators.required, Validators.maxLength(255), Validators.minLength(6), Validators.pattern("^[a-zA-Z][0-9a-zA-Z]*")]],
+      'login': ["", [Validators.required, Validators.maxLength(255), Validators.minLength(6), Validators.email]],
       'password': ["", [Validators.required, Validators.maxLength(255), Validators.minLength(10)]]
     })
   }
@@ -31,5 +31,6 @@ export class AuthComponent{
   login(){
     this.authService.setIsLogin(true);
     this.router.navigateByUrl('/products');
+    this.userService.registerUser(this.authForm.value);
   }
 }

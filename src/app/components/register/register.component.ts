@@ -15,15 +15,15 @@ export class RegisterComponent{
 
     constructor(private formBuilt:FormBuilder, public userService:UsersService, private router:Router){
         this.regForm = formBuilt.group({
-            'email': ["", [Validators.required, Validators.email]],
+            'login': ["", [Validators.required, Validators.email]],
             'password': ["", [Validators.required, Validators.maxLength(255), Validators.minLength(6)]],
             'firstName': ["", [Validators.required, Validators.pattern('[a-zA-Z]*')]],
-            'fullName': ["", [Validators.required, Validators.pattern('[a-zA-Z]*')]],
+            'lastName': ["", [Validators.required, Validators.pattern('[a-zA-Z]*')]],
         })
     }
 
     submit(){
-        this.userService.postRequestUser(this.regForm.value).subscribe();
+        this.userService.registerUser(this.regForm.value).subscribe();
         this.router.navigateByUrl('/login');
     }
 }

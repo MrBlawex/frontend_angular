@@ -5,8 +5,8 @@
     </div>
     <div class="reg-group">
         <mat-form-field>
-            <input matInput type="text" class="reg-control" name="email" placeholder="Enter email" formControlName="email">
-            <mat-error *ngIf="regForm.controls['email'].invalid">Please enter a valid email address</mat-error>
+            <input matInput type="text" class="reg-control" name="email" placeholder="Enter email" formControlName="login">
+            <mat-error *ngIf="regForm.controls['login'].invalid">Please enter a valid email address</mat-error>
         </mat-form-field>
     </div>
     <div class="reg-group">
@@ -22,7 +22,7 @@
     </div>
     <div class="reg-group">
         <mat-form-field>
-            <input matInput type="text" name="fname" placeholder="Enter surename" formControlName="fullName">
+            <input matInput type="text" name="fname" placeholder="Enter surename" formControlName="lastName">
         </mat-form-field>
     </div>
     <div class="reg-group">
