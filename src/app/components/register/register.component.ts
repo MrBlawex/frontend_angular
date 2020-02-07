@@ -23,7 +23,7 @@ export class RegisterComponent{
     }
 
     submit(){
-        this.userService.postRequestUser(this.regForm.value);
+        this.userService.postRequestUser(this.regForm.value).subscribe();
         this.router.navigateByUrl('/login');
     }
 }
