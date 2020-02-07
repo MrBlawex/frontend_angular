@@ -6,11 +6,13 @@
     <div class="reg-group">
         <mat-form-field>
             <input matInput type="text" class="reg-control" name="email" placeholder="Enter email" formControlName="email">
+            <mat-error *ngIf="regForm.controls['email'].invalid">Please enter a valid email address</mat-error>
         </mat-form-field>
     </div>
     <div class="reg-group">
         <mat-form-field>
-            <input matInput type="text" class="reg-control" name="password" placeholder="Enter password" formControlName="password">
+            <input matInput type="text" id="name" class="reg-control" name="passworda" placeholder="Enter password" formControlName="password">
+            <!-- <mat-error *ngIf="regForm.controls['email'].errors['minlength'] instanceof null">Length</mat-error> -->
         </mat-form-field>
     </div>
     <div class="reg-group">
@@ -20,10 +22,10 @@
     </div>
     <div class="reg-group">
         <mat-form-field>
-            <input matInput type="text" name="fname" placeholder="Enter qwert" formControlName="fullName">
+            <input matInput type="text" name="fname" placeholder="Enter surename" formControlName="fullName">
         </mat-form-field>
     </div>
     <div class="reg-group">
-        <button mat-raised-button type="submit" (click)="submit()" mat-button>зарегистрироваться</button>
+        <button mat-raised-button color="accent" type="submit" (click)="submit()" [disabled]="regForm.invalid">зарегистрироваться</button>
     </div>
 </form>

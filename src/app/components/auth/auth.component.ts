@@ -21,8 +21,7 @@ export class AuthComponent{
     })
   }
 
-  ngOnInit(): void {
-    this.users = this.userService.getUsers();
+  ngOnInit(){
   }
 
   submit(){
