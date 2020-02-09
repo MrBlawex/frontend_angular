@@ -1,6 +1,9 @@
 <div>
   <div class="table-container">
     <table mat-table [dataSource]="productsArr">
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row appHoverControl *matRowDef="let row; columns: displayedColumns"></tr>
+
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Название продукта</th>
         <td mat-cell *matCellDef="let prod">{{ prod.name }}</td>
@@ -14,13 +17,14 @@
       <ng-container matColumnDef="control" stickyEnd>
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button mat-button><mat-icon>edit</mat-icon></button>
-          <button mat-button><mat-icon>clear</mat-icon></button>
+          <button mat-icon-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon>clear</mat-icon>
+          </button>
         </td>
       </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
   </div>
 
