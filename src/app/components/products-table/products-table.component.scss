@@ -2,6 +2,7 @@ mat-card {
   width: 50%;
   margin: 10px;
 }
+
 table {
   width: 100%;
 
@@ -19,8 +20,10 @@ table {
 }
 
 .mat-column-name,
-.mat-column-price,
-.mat-column-control {
-  width: 33%;
-  text-align: center;
+.mat-column-price {
+  width: 40%;
+}
+
+.btn-remove {
+  color: rgba(255, 0, 0, 0.7);
 }

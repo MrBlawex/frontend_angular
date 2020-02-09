@@ -27,6 +27,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ProductStatsComponent } from './components/product-stats/product-stats.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { HoverControlDirective } from './directives/hover-control.directive';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { HoverControlDirective } from './directives/hover-control.directive';
     MatIconModule,
     MatToolbarModule,
     MatCardModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatSortModule
   ],
   providers: [UsersService, ProductService],
   bootstrap: [AppComponent]
