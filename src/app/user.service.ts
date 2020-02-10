@@ -14,11 +14,12 @@ export class UsersService{
     private readonly postRegister = '/register';
     private readonly postLogin = '/login';
 
-    private handleErro(error: HttpErrorResponse){
-        if (error.error instanceof ErrorEvent){
-            console.log('An occurade error in client-side', error.error.message);
+    private handleErro(res: HttpErrorResponse){
+        const {error, status} = res;
+        if (error instanceof ErrorEvent){
+            console.log('An occurade error in client-side', error.message);
         } else {
-            console.log(`BackEnd returns error ${error.status} body was ${error.error}`);
+            console.log(`BackEnd returns error ${status} body was ${error}`);
         }
         return throwError('Something bad happened; please try again later.');
     }
@@ -28,7 +29,7 @@ export class UsersService{
     public registerUser(body:IRegister){
         return this.http.post(this.baseUrl + this.postRegister, body)
         .pipe(
-            catchError(this.handleErro),
+            catchError((error) => this.handleErro(error)),
         );
     }
 
