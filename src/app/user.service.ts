@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { throwError, of, Observable, observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IRegister } from 'src/app/models/IRegister';
 import { ILogin } from 'src/app/models/ILogin';
@@ -19,9 +19,9 @@ export class UsersService{
         if (error instanceof ErrorEvent){
             console.log('An occurade error in client-side', error.message);
         } else {
-            console.log(`BackEnd returns error ${status} body was ${error}`);
+            console.log(`BackEnd returns error ${status} body was ${error.errorMessage}`);
         }
-        return throwError('Something bad happened; please try again later.');
+        return throwError(res);
     }
 
     constructor(private http:HttpClient){}
@@ -29,14 +29,14 @@ export class UsersService{
     public registerUser(body:IRegister){
         return this.http.post(this.baseUrl + this.postRegister, body)
         .pipe(
-            catchError((error) => this.handleErro(error)),
+            catchError(error => this.handleErro(error)),
         );
     }
 
     public loginUser(body:ILogin){
         return this.http.post(this.baseUrl + this.postLogin, body)
         .pipe(
-            catchError(this.handleErro),
+            catchError(error => this.handleErro(error)),
         );
     }
 }

@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
   
   logout(){
-    this.authService.setIsLogin(false);
+    this.authService.deleteToken();
   }
 }
 
