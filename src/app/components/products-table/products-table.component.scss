@@ -3,8 +3,27 @@ mat-card {
   margin: 10px;
 }
 
-table,
-mat-paginator {
+table {
   width: 100%;
-  display: flexbox;
+
+  mat-paginator {
+    width: 100%;
+    display: flexbox;
+  }
+}
+
+.table-container {
+  position: relative;
+  max-height: 80vh;
+  height: 80vh;
+  overflow: auto;
+}
+
+.mat-column-name,
+.mat-column-price {
+  width: 40%;
+}
+
+.btn-remove {
+  color: rgba(255, 0, 0, 0.7);
 }

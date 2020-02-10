@@ -14,7 +14,7 @@ export class ProductService {
 
   private _init(){
     for (let i = 0; i < 500; i++){
-      this.products.push({name: 'fsafafas', price: i});
+      this.products.push({name: 'fsafafas' + String(i), price: Number(Math.random() * 10000)});
     }
   }
   
