@@ -22,8 +22,20 @@ table {
 .mat-column-name,
 .mat-column-price {
   width: 40%;
+  text-align: center;
 }
 
 .btn-remove {
   color: rgba(255, 0, 0, 0.7);
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+:host::ng-deep{
+  .mat-sort-header-container{
+    justify-content: center;
+  }
 }

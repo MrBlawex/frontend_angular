@@ -1,5 +1,10 @@
 <div>
-  <div class="table-container center">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search product name">
+  </mat-form-field>
+
+  <div class="table-container">
     <table mat-table [dataSource]="productsArr" matSort>
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row appHoverControl *matRowDef="let row; columns: displayedColumns"></tr>

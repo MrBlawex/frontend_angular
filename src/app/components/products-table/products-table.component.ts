@@ -23,6 +23,12 @@ export class ProductsTableComponent implements OnInit {
   ngOnInit() {
     this.productsArr.paginator = this.paginator;
     this.productsArr.sort = this.sort;
+    this.productsArr.filterPredicate = (prod: IProduct, filter: string) => !filter || prod.name.startsWith(filter);
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.productsArr.filter = filterValue.trim().toLowerCase();
   }
 
 }
