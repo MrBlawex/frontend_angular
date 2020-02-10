@@ -1,5 +1,10 @@
 <div>
-  <div class="table-container center">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search product name">
+  </mat-form-field>
+
+  <div class="table-container">
     <table mat-table [dataSource]="productsArr" matSort>
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row appHoverControl *matRowDef="let row; columns: displayedColumns"></tr>
@@ -17,11 +22,11 @@
       <ng-container matColumnDef="control" stickyEnd>
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let prod">
-          <button mat-icon-button>
-            <mat-icon>edit</mat-icon>
+          <button mat-icon-button (click)="editProduct(prod)">
+            <mat-icon >edit</mat-icon>
           </button>
-          <button mat-icon-button class="btn-remove">
-            <mat-icon>clear</mat-icon>
+          <button mat-icon-button (click)="removeProduct(prod)" class="btn-remove">
+            <mat-icon >clear</mat-icon>
           </button>
         </td>
       </ng-container>
