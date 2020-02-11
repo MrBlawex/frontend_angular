@@ -12,7 +12,7 @@
     mat-raised-button
     (click)="openBottomSheet()"
     [routerLink]="['/login']"
-    *ngIf="!authService.isHasToken()">
+    *ngIf="!authService.getToken()">
     Войти
   </button>
 
@@ -21,7 +21,7 @@
     color="accent"
     class="authButton"
     [routerLink]="['/login']"
-    *ngIf="authService.isHasToken()"
+    *ngIf="authService.getToken()"
     (click)="logout()">
     Выйти
   </button>
