@@ -5,7 +5,9 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatSort } from "@angular/material/sort";
 import { MatDialog } from "@angular/material/dialog";
-import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
+import { ProductDialogComponent } from "../product-dialog/product-dialog.component";
+import { ConfirmDialogModel } from "src/app/models/ConfirmDialog";
+import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog.component";
 
 @Component({
   selector: "app-products-table",
@@ -39,7 +41,20 @@ export class ProductsTableComponent implements OnInit {
   }
 
   public removeProduct(product: IProduct) {
-    this._productService.removeProduct(product);
+    const message = `Are you sure you want to do this?`;
+
+    const dialogData = new ConfirmDialogModel("Confirm Edit", message);
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        this._productService.removeProduct(product);
+      }
+    });
   }
 
   public editProduct(product: IProduct) {
@@ -53,5 +68,4 @@ export class ProductsTableComponent implements OnInit {
       this._productService.editProduct(product, result);
     });
   }
-
 }
