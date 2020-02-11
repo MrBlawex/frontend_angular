@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { IRegister } from 'src/app/models/IRegister';
-import { ILogin } from 'src/app/models/ILogin';
+import { RegistratinModel } from 'src/app/models/Registeration';
+import { LoginModel } from 'src/app/models/Login';
 
 
 @Injectable({
@@ -27,14 +27,14 @@ export class UsersService {
 
     constructor(private http: HttpClient) {}
 
-    public registerUser(body: IRegister) {
+    public registerUser(body: RegistratinModel) {
         return this.http.post(this.baseUrl + this.postRegister, body)
         .pipe(
             catchError(error => this.handleError(error)),
         );
     }
 
-    public loginUser(body: ILogin) {
+    public loginUser(body: LoginModel) {
         return this.http.post(this.baseUrl + this.postLogin, body)
         .pipe(
             catchError(error => this.handleError(error)),

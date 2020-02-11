@@ -13,9 +13,11 @@ export class AuthGuard implements CanActivate {
     }
 
     checkLogin() {
-        if (this.auth.getToken() !== undefined) {
+        if (this.auth.getToken()) {
+            console.log('canActive true');
             return true;
         }
+        console.log('canActive false');
         this.router.navigate(['/login']);
         return false;
     }

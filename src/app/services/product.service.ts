@@ -1,33 +1,33 @@
 import { Injectable } from '@angular/core';
-import { IProduct } from '../models/IProduct';
+import { ProductModel } from '../models/Product';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { HttpClient, HttpRequest, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  public products: IProduct[] = [];
+  public products: ProductModel[] = [];
+  private readonly baseUrl = 'https://localhost:5001';
 
-  constructor() {
-    this._init();
+
+  constructor(private http: HttpClient) {
   }
 
-  private _init(){
-    for (let i = 0; i < 500; i++){
-      this.products.push({name: 'fsafafas' + String(i), price: Number(Math.random() * 10000)});
-    }
+  public getProducts(): Observable<ProductModel[]> {
+    return this.http.get<ProductModel[]>(`https://localhost:5001/api/Product`);
   }
-  
-  public addProducts(product:IProduct){
+
+  public addProducts(product: ProductModel) {
     this.products.push(product);
   }
 
-  public removeProduct(product:IProduct){
-    this.products = this.products.filter((prod:IProduct) => prod.name != product.name && prod.price != product.price);
+  public removeProduct(product: ProductModel) {
+    this.products = this.products.filter((prod: ProductModel) => prod.name !== product.name && prod.price !== product.price);
   }
 
-  public editProduct(productOld:IProduct, productNew: IProduct){
-   
+  public editProduct(productOld: ProductModel, productNew: ProductModel) {
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
-import { IProduct } from 'src/app/models/IProduct'
+import { ProductModel } from 'src/app/models/Product';
 
 @Component({
   selector: 'app-products-add',
@@ -10,18 +10,19 @@ import { IProduct } from 'src/app/models/IProduct'
 })
 export class ProductsAddComponent implements OnInit {
 
-  form: FormGroup
+  form: FormGroup;
 
   constructor(private _productService: ProductService) { }
 
   ngOnInit() {
-    this.form = new FormGroup({curName: new FormControl('', Validators.required), curPrice: new FormControl('', [Validators.required, Validators.min(0)])})
+    // tslint:disable-next-line:max-line-length
+    this.form = new FormGroup({curName: new FormControl('', Validators.required), curPrice: new FormControl('', [Validators.required, Validators.min(0)])});
   }
 
-  submit(){
+  submit() {
     const {curName, curPrice} = this.form.controls;
-    const product: IProduct = {name: String(curName.value), price: Number(curPrice.value)}
-    this._productService.addProducts(product)
+    const product: ProductModel = {name: String(curName.value), price: Number(curPrice.value)};
+    this._productService.addProducts(product);
     this.form.reset();
   }
 }

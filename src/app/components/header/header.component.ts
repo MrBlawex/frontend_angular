@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/components/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private _bottomSheet: MatBottomSheet, public authService:AuthService) { }
+  constructor(private _bottomSheet: MatBottomSheet, public authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -18,8 +18,7 @@ export class HeaderComponent implements OnInit {
    // this._bottomSheet.open();
   }
 
-  
-  logout(){
+  logout() {
     this.authService.deleteToken();
   }
 }
