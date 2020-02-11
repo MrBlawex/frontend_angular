@@ -30,6 +30,7 @@ import { HoverControlDirective } from "./directives/hover-control.directive";
 import { MatSortModule } from "@angular/material/sort";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ProductDialogComponent } from './components/product-dialog/product-dial
     HeaderComponent,
     ProductStatsComponent,
     HoverControlDirective,
-    ProductDialogComponent
+    ProductDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +66,6 @@ import { ProductDialogComponent } from './components/product-dialog/product-dial
   ],
   providers: [UsersService, ProductService],
   bootstrap: [AppComponent],
-  entryComponents: [ProductDialogComponent]
+  entryComponents: [ProductDialogComponent, ConfirmDialogComponent]
 })
 export class AppModule {}

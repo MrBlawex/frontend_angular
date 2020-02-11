@@ -23,8 +23,9 @@
 </div>
 <div mat-dialog-actions class="control-btn">
   <button
-    mat-button
-    [mat-dialog-close]="{ name: data.name, price: data.price }"
+    mat-raised-button
+    (click)="onEdit()"
+    color="primary"
     [disabled]="form.invalid"
   >
     Изменить продукт
