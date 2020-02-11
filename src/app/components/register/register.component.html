@@ -5,27 +5,69 @@
     </div>
     <div class="reg-group">
         <mat-form-field>
-            <input matInput type="text" class="reg-control" name="email" placeholder="Enter email" formControlName="email">
-            <mat-error *ngIf="regForm.controls['email'].invalid">Please enter a valid email address</mat-error>
+            <input matInput type="text" class="reg-control" name="email" placeholder="Enter email" formControlName="login">
+
+            <!-- ОШИБКА: Если пользователь с таким эматлом не зарегестрирован -->
+            <mat-error *ngIf="regForm.get('login').errors?.invadLogin">
+                {{errorMessage}}
+            </mat-error>
+            <!-- ОШИБКА: Поле логина должно быть обязательным к заполнению -->
+            <mat-error *ngIf="regForm.get('login').errors?.required">
+                Email is <strong>required</strong>
+            </mat-error>
+            <!-- ОШИБКА: Если ввели не валидный эмаил -->
+            <mat-error *ngIf="regForm.get('login').errors?.email">
+                Please enter a valid email address
+            </mat-error>
         </mat-form-field>
     </div>
     <div class="reg-group">
         <mat-form-field>
             <input matInput type="text" id="name" class="reg-control" name="passworda" placeholder="Enter password" formControlName="password">
-            <!-- <mat-error *ngIf="regForm.controls['email'].errors['minlength'] instanceof null">Length</mat-error> -->
+
+            <!-- ОШИБКА: Если минимальная длина пароля меньше 6 символов -->
+            <mat-error *ngIf="regForm.get('password').errors?.minlength">
+                Minimum password length is 6 characters
+            </mat-error>
+            <!-- ОШИБКА: Если максимальная длина пароля больше 255 символов -->
+            <mat-error *ngIf="regForm.get('password').errors?.maxlength">
+                Maximum password length is 255 characters
+            </mat-error>
+            <!-- ОШИБКА: Поле логина должно быть обязательным к заполнению -->
+            <mat-error *ngIf="regForm.get('password').errors?.required">
+                Password is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
     </div>
     <div class="reg-group">
         <mat-form-field>
             <input matInput type="text" name="fname" placeholder="Enter name" formControlName="firstName">
+
+            <!-- ОШИБКА: Если ввели не валидное имя -->
+            <mat-error *ngIf="regForm.get('firstName').errors?.pattern">
+                Name must contain <strong>only letters</strong> 
+            </mat-error>
+            <!-- ОШИБКА: Поле firstName должно быть обязательным к заполнению -->
+            <mat-error *ngIf="regForm.get('firstName').errors?.required">
+                Name is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
     </div>
     <div class="reg-group">
         <mat-form-field>
-            <input matInput type="text" name="fname" placeholder="Enter surename" formControlName="fullName">
+            <input matInput type="text" name="fname" placeholder="Enter surename" formControlName="lastName">
+
+            <!-- ОШИБКА: Если ввели не валидную фамилию -->
+            <mat-error *ngIf="regForm.get('lastName').errors?.pattern">
+                Surname must contain <strong>only letters</strong> 
+            </mat-error>
+            <!-- ОШИБКА: Поле lastName должно быть обязательным к заполнению -->
+            <mat-error *ngIf="regForm.get('firstName').errors?.required">
+                Surname is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
     </div>
     <div class="reg-group">
-        <button mat-raised-button color="accent" type="submit" (click)="submit()" [disabled]="regForm.invalid">зарегистрироваться</button>
+        <button mat-raised-button color="accent" class="btn-submit" type="submit" (click)="submit()" [disabled]="regForm.invalid">зарегистрироваться</button>
     </div>
 </form>

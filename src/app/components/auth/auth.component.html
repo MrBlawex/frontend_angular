@@ -6,11 +6,33 @@
     <div class="form_group">
         <mat-form-field>
             <input matInput class="form-control" type="text" placeholder="Введите логин" formControlName="login">
+
+            <!-- ОШИБКА: Поле логина должно быть обязательным к заполнению -->
+            <mat-error *ngIf="authForm.get('login').errors?.required">
+                Email is <strong>required</strong> 
+            </mat-error>
+            <!-- ОШИБКА: Если ввели не валидный эмаил -->
+            <mat-error *ngIf="authForm.get('login').errors?.email">
+                Please enter a valid email address
+            </mat-error>
+            <!-- ОШИБКА: Если пользователь с таким эматлом не зарегестрирован -->
+            <mat-error *ngIf="authForm.get('login').errors?.invalidLogin">
+                {{errorMessage}}
+            </mat-error>
         </mat-form-field>
     </div>
     <div class="form_group">
         <mat-form-field>
             <input matInput type="password" placeholder="Введите пароль" formControlName="password">
+
+            <!-- ОШИБКА: Поле пароля должно быть обязательным к заполнению  -->
+            <mat-error *ngIf="authForm.get('password').errors?.required">
+                Password is <strong>required</strong> 
+            </mat-error>
+            <!-- ОШИБКА: Если для текущего пользователя не соответствует пароль -->
+            <mat-error *ngIf="authForm.get('password').errors?.invalidPassword">
+                {{errorMessage}}
+            </mat-error>
         </mat-form-field>
     </div>
     <div class="form-group">

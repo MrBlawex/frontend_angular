@@ -1,44 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
-import {catchError} from 'rxjs/operators'
+import { catchError } from 'rxjs/operators';
+import { IRegister } from 'src/app/models/IRegister';
+import { ILogin } from 'src/app/models/ILogin';
+
 
 @Injectable({
     providedIn: 'root'
 })
-export class UsersService{
+export class UsersService {
     private users = [];
-    private readonly baseUrl = 'https://localhost:5001/api/Account/Register';
-    private readonly postUrl = '';
-    private readonly getUrl = '';
+    private readonly baseUrl = 'https://localhost:5001';
+    private readonly postRegister = '/register';
+    private readonly postLogin = '/login';
 
-    private handleErro(error: HttpErrorResponse){
-        if (error.error instanceof ErrorEvent){
-            console.log('An occurade error in client-side', error.error.message);
+    private handleError(res: HttpErrorResponse) {
+        const {error, status} = res;
+        if (error instanceof ErrorEvent) {
+            console.log('An occurade error in client-side', error.message);
         } else {
-            console.log(`BackEnd returns error ${error.status} body was ${error.error}`);
+            console.log(`BackEnd returns error ${status} body was ${error.errorMessage}`);
         }
-        return throwError('Something bad happened; please try again later.');
+        return throwError(res);
     }
 
-    constructor(private http:HttpClient){}
+    constructor(private http: HttpClient) {}
 
-    public postRequestUser(body){
-        return this.http.post(this.baseUrl, body)
+    public registerUser(body: IRegister) {
+        return this.http.post(this.baseUrl + this.postRegister, body)
         .pipe(
-            catchError(this.handleErro),
+            catchError(error => this.handleError(error)),
         );
     }
 
-    public getRequestUser(){
-        return this.http.get(this.baseUrl + this.getUsers);
-    }
-    
-    public getUsers(){
-        return this.users;
-    }
-
-    public testadd(user){
-        this.users.push(user);
+    public loginUser(body: ILogin) {
+        return this.http.post(this.baseUrl + this.postLogin, body)
+        .pipe(
+            catchError(error => this.handleError(error)),
+        );
     }
 }

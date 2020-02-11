@@ -1,19 +1,28 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root'
 })
-export class AuthService{
-    private isLoggin = false;
+export class AuthService {
+  // Вывод токена из LocalStroreg
 
-    // Вывод поля isLoggin из localStorage
-    public getIsLogin(){
-        return JSON.parse(localStorage.getItem('isLogin'));
-    }
+  public getToken() {
+    return localStorage.getItem('token');
+  }
 
-    // Запись в isLoggin и запись значения в localStorage
-    public setIsLogin(bool:boolean){
-        this.isLoggin = bool;
-        localStorage.setItem('isLogin', String(this.isLoggin));
+  // Запись токена в LocalStroreg
+  public setToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  public isHasToken() {
+    if (this.getToken() === null) {
+      return false;
     }
+    return true;
+  }
+
+  public deleteToken() {
+    localStorage.removeItem('token');
+  }
 }
