@@ -29,7 +29,7 @@ import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { HoverControlDirective } from "./directives/hover-control.directive";
 import { MatSortModule } from "@angular/material/sort";
 import { MatDialogModule } from "@angular/material/dialog";
-import { DialogComponent } from './components/dialog/dialog.component';
+import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     HeaderComponent,
     ProductStatsComponent,
     HoverControlDirective,
-    DialogComponent
+    ProductDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +64,6 @@ import { DialogComponent } from './components/dialog/dialog.component';
   ],
   providers: [UsersService, ProductService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent]
+  entryComponents: [ProductDialogComponent]
 })
 export class AppModule {}

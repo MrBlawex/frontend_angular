@@ -5,7 +5,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatSort } from "@angular/material/sort";
 import { MatDialog } from "@angular/material/dialog";
-import { DialogComponent } from "../dialog/dialog.component";
+import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
 
 @Component({
   selector: "app-products-table",
@@ -43,7 +43,7 @@ export class ProductsTableComponent implements OnInit {
   }
 
   public editProduct(product: IProduct) {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(ProductDialogComponent, {
       width: "500px",
       data: product
     });
