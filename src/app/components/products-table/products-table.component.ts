@@ -1,12 +1,13 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductModel } from 'src/app/models/Product';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
-import { Observable } from 'rxjs';
+import { ConfirmDialogModel } from 'src/app/models/ConfirmDialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
 
 @Component({
   selector: 'app-products-table',
@@ -38,11 +39,24 @@ export class ProductsTableComponent implements OnInit {
   }
 
   public removeProduct(product: ProductModel) {
-    this._productService.removeProduct(product);
+    const message = `Are you sure you want to do this?`;
+
+    const dialogData = new ConfirmDialogModel('Confirm Edit', message);
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: '400px',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        this._productService.removeProduct(product);
+      }
+    });
   }
 
   public editProduct(product: ProductModel) {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(ProductDialogComponent, {
       width: '500px',
       data: product
     });

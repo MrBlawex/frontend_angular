@@ -29,7 +29,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { HoverControlDirective } from './directives/hover-control.directive';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DialogComponent } from './components/dialog/dialog.component';
+import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { AuthInterceptor } from './components/auth/auth.interceptor';
 
 @NgModule({
@@ -43,7 +44,8 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     HeaderComponent,
     ProductStatsComponent,
     HoverControlDirective,
-    DialogComponent
+    ProductDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -63,12 +65,16 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     MatSortModule,
     MatDialogModule
   ],
-  providers: [UsersService, ProductService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
+  providers: [
+    UsersService,
+    ProductService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent]
+  entryComponents: [ProductDialogComponent, ConfirmDialogComponent]
 })
 export class AppModule {}
