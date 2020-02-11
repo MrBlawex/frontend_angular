@@ -12,14 +12,14 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
-  authForm: FormGroup;
-  errorMessage = '';
+  private authForm: FormGroup;
+  public errorMessage = 'Hello';
 
   constructor(private fromBuilder: FormBuilder, private userService: UsersService,
               private authService: AuthService, private router: Router) {
     this.authForm = fromBuilder.group({
       login: ['', [Validators.required, Validators.maxLength(255), Validators.minLength(6), Validators.email]],
-      password: ['', [Validators.required, Validators.maxLength(255), Validators.minLength(10)]]
+      password: ['', [Validators.required, Validators.maxLength(255), Validators.minLength(6)]]
     });
   }
 

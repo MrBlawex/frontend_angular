@@ -20,8 +20,8 @@ export class ProductService {
     return this.http.get<ProductModel[]>(`https://localhost:5001/api/Product`);
   }
 
-  public addProducts(product: ProductModel) {
-    this.products.push(product);
+  public addProduct(product: ProductModel) {
+    return this.http.post('https://localhost:5001/api/Product', product);
   }
 
   public removeProduct(product: ProductModel) {
