@@ -19,11 +19,20 @@ table {
   overflow: auto;
 }
 
-.mat-column-name,
-.mat-column-price {
-  width: 40%;
+.mat-column-name{
+  width: 30%;
   text-align: center;
 }
+.mat-column-price,
+.mat-column-quantity{
+  width: 20%;
+  text-align: center;
+}
+
+.mat-column-control{
+
+}
+
 
 .btn-remove {
   color: rgba(255, 0, 0, 0.7);

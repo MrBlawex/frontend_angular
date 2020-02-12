@@ -1,5 +1,5 @@
 <section>
-  <form (ngSubmit)="submit()" [formGroup]="form">
+  <form [formGroup]="form">
     <mat-form-field class="example-full-width">
       <input
         matInput
@@ -16,7 +16,7 @@
         placeholder="Цена продукта"
       />
     </mat-form-field>
-    <button mat-button type="submit" [disabled]="form.invalid">
+    <button mat-button type="submit" [disabled]="form.invalid" (click)="submit()">
       Добавить продукт
     </button>
   </form>

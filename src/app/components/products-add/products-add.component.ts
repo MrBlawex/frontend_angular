@@ -21,7 +21,11 @@ export class ProductsAddComponent implements OnInit {
   }
 
   submit() {
-    this._productService.addProduct(this.form.value).subscribe();
-    this.form.reset();
+    this._productService.addProduct(this.form.value).subscribe(
+      () => {
+        this._productService.updateProducts().subscribe();
+        this.form.reset();
+      }
+    );
   }
 }

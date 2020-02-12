@@ -19,6 +19,11 @@
         <td mat-cell *matCellDef="let prod">{{ prod.price }}</td>
       </ng-container>
 
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Количество</th>
+        <td mat-cell *matCellDef="let prod">{{ prod.quantity }}</td>
+      </ng-container>
+
       <ng-container matColumnDef="control" stickyEnd>
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let prod">

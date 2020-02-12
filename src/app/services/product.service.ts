@@ -1,33 +1,42 @@
 import { Injectable } from '@angular/core';
 import { ProductModel } from '../models/Product';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { HttpClient, HttpRequest, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { tap, delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  public products: ProductModel[] = [];
-  private readonly baseUrl = 'https://localhost:5001';
+  public products$: BehaviorSubject<ProductModel[]> = new BehaviorSubject([]);
+  private readonly baseUrl = 'https://localhost:5001/api/Product';
 
 
   constructor(private http: HttpClient) {
   }
 
+  public updateProducts() {
+    return this.getProducts().pipe(
+      tap(data => {
+        this.products$.next(data);
+      })
+    );
+  }
+
   public getProducts(): Observable<ProductModel[]> {
-    return this.http.get<ProductModel[]>(`https://localhost:5001/api/Product`);
+    return this.http.get<ProductModel[]>(`${this.baseUrl}`);
   }
 
   public addProduct(product: ProductModel) {
-    return this.http.post('https://localhost:5001/api/Product', product);
+    return this.http.post(`${this.baseUrl}`, product);
   }
 
   public removeProduct(product: ProductModel) {
-    this.products = this.products.filter((prod: ProductModel) => prod.name !== product.name && prod.price !== product.price);
+    return this.http.delete(`${this.baseUrl}/${product.id}`);
   }
 
-  public editProduct(productOld: ProductModel, productNew: ProductModel) {
+  public editProduct(product: ProductModel) {
+    return this.http.put(`${this.baseUrl}/${product.id}`, {name: product.name, price: product.price});
   }
 }

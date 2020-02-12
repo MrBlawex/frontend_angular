@@ -15,7 +15,7 @@ import { ProductDialogComponent } from '../product-dialog/product-dialog.compone
   styleUrls: ['./products-table.component.scss']
 })
 export class ProductsTableComponent implements OnInit {
-  public displayedColumns: string[] = ['name', 'price', 'control'];
+  public displayedColumns: string[] = ['name', 'price', 'quantity', 'control'];
   public productsArr = new MatTableDataSource<ProductModel>();
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -30,7 +30,13 @@ export class ProductsTableComponent implements OnInit {
     this.productsArr.paginator = this.paginator;
     this.productsArr.sort = this.sort;
     this.productsArr.filterPredicate = (prod: ProductModel, filter: string) => !filter || prod.name.startsWith(filter);
-    this.createProductsList();
+
+    this.refreshProductsList();
+    this._productService.products$.subscribe(
+      data => {
+        this.productsArr.data = data;
+      }
+    );
   }
 
   public applyFilter(event: Event) {
@@ -50,7 +56,9 @@ export class ProductsTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult) {
-        this._productService.removeProduct(product);
+        this._productService.removeProduct(product).subscribe(
+          () => this._productService.updateProducts().subscribe()
+        );
       }
     });
   }
@@ -58,20 +66,18 @@ export class ProductsTableComponent implements OnInit {
   public editProduct(product: ProductModel) {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
       width: '500px',
-      data: product
+      data: {id: product.id, name: product.name, price: product.price, quantity: product.quantity}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this._productService.editProduct(product, result);
+      console.log('The dialog was closed', result);
+      this._productService.editProduct(result).subscribe(
+        () => this._productService.updateProducts().subscribe()
+      );
     });
   }
 
-  public createProductsList() {
-    this._productService.getProducts().subscribe(
-      (data: ProductModel[]) => {
-        this.productsArr.data = data;
-      }
-    );
+  public refreshProductsList() {
+    this._productService.updateProducts().subscribe();
   }
 }
