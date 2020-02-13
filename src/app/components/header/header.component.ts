@@ -1,25 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { AuthService } from 'src/app/components/auth/auth.service';
+import { Component } from "@angular/core";
+import {
+  MatBottomSheet,
+  MatBottomSheetRef
+} from "@angular/material/bottom-sheet";
+import { AuthService } from "src/app/components/auth/auth.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"]
 })
-export class HeaderComponent implements OnInit {
-
-  constructor(private _bottomSheet: MatBottomSheet, public authService: AuthService) { }
-
-  ngOnInit() {
-  }
+export class HeaderComponent {
+  constructor(
+    private _bottomSheet: MatBottomSheet,
+    public authService: AuthService
+  ) {}
 
   openBottomSheet(): void {
-   // this._bottomSheet.open();
+    // this._bottomSheet.open();
   }
 
   logout() {
     this.authService.deleteToken();
   }
 }
-

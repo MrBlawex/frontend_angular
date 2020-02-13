@@ -5,11 +5,6 @@ mat-card {
 
 table {
   width: 100%;
-
-  mat-paginator {
-    width: 100%;
-    display: flexbox;
-  }
 }
 
 .table-container {
@@ -20,12 +15,12 @@ table {
   border: 1px solid black;
 }
 
-.mat-column-name{
+.mat-column-name {
   width: 30%;
   text-align: center;
 }
 .mat-column-price,
-.mat-column-quantity{
+.mat-column-quantity {
   width: 20%;
   text-align: center;
 }
@@ -39,13 +34,7 @@ table {
   width: 100%;
 }
 
-:host::ng-deep{
-  .mat-sort-header-container{
-    justify-content: center;
-  }
-}
-
-.table-row td{
+.table-row td {
   border-bottom-width: 0;
   text-align: left;
 }
@@ -54,13 +43,37 @@ tr.example-detail-row {
   height: 0;
 }
 
-.element-detail{
+.element-detail {
   overflow: hidden;
   display: flex;
 }
 
-.btn-controler{
-  width: 100%;
+.element-detail {
   display: flex;
-  justify-content: flex-start;
+
+  .product-list {
+    width: 300px;
+  }
+
+  .btn-controler {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    button {
+      margin: 10px;
+    }
+  }
+}
+
+.table-footer {
+  display: flex;
+
+  button {
+    margin: 5px;
+  }
+
+  mat-paginator {
+    width: 100%;
+  }
 }

@@ -1,19 +1,23 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA
+} from '@angular/material/dialog';
 import { ConfirmDialogModel } from 'src/app/models/ConfirmDialog';
 import { ProductModel } from 'src/app/models/Product';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
-  selector: 'app-product-dialog',
-  templateUrl: './product-dialog.component.html',
-  styleUrls: ['./product-dialog.component.scss']
+  selector: 'app-product-edit-dialog',
+  templateUrl: './product-edit-dialog.component.html',
+  styleUrls: ['./product-edit-dialog.component.scss']
 })
-export class ProductDialogComponent implements OnInit {
+export class ProductEditDialogComponent implements OnInit {
   form: FormGroup;
   constructor(
-    public productDialog: MatDialogRef<ProductDialogComponent>,
+    public productDialog: MatDialogRef<ProductEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ProductModel,
     public dialog: MatDialog
   ) {}

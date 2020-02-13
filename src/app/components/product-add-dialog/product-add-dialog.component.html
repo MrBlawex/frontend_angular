@@ -1,4 +1,5 @@
-<section>
+<h3 mat-dialog-title>Заполните поля</h3>
+<div mat-dialog-content>
   <form [formGroup]="form">
     <mat-form-field class="example-full-width">
       <input
@@ -16,8 +17,16 @@
         placeholder="Цена продукта"
       />
     </mat-form-field>
-    <button mat-button type="submit" [disabled]="form.invalid" (click)="submit()">
-      Добавить продукт
-    </button>
   </form>
-</section>
+</div>
+<div mat-dialog-actions class="control-btn">
+  <button
+    mat-raised-button
+    (click)="submit()"
+    color="primary"
+    [disabled]="form.invalid"
+  >
+    Добавить продукт
+  </button>
+  <button mat-button (click)="onDismiss()">Отмена</button>
+</div>

@@ -1,8 +1,6 @@
 <mat-toolbar color="primary">
   <span>Table View </span>
 
-  
-
   <!-- This fills the remaining space of the current row -->
   <span class="space"></span>
 
@@ -12,7 +10,8 @@
     mat-raised-button
     (click)="openBottomSheet()"
     [routerLink]="['/login']"
-    *ngIf="!authService.getToken()">
+    *ngIf="!authService.getToken()"
+  >
     Войти
   </button>
 
@@ -22,7 +21,8 @@
     class="authButton"
     [routerLink]="['/login']"
     *ngIf="authService.getToken()"
-    (click)="logout()">
+    (click)="logout()"
+  >
     Выйти
   </button>
 </mat-toolbar>

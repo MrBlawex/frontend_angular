@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { ProductsTableComponent } from './components/products-table/products-table.component';
-import { ProductsAddComponent } from './components/products-add/products-add.component';
 import { RegisterComponent } from './components/register/register.component';
 import { TransactionAddComponent } from './components/transaction-add/transaction-add.component';
 import { UsersService } from './user.service';
@@ -21,33 +20,30 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-import { ProductsControllerComponent } from './components/products-controller/products-controller.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
-import { ProductStatsComponent } from './components/product-stats/product-stats.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-import { HoverControlDirective } from './directives/hover-control.directive';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { AuthInterceptor } from './components/auth/auth.interceptor';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ProductAddDialogComponent } from './components/product-add-dialog/product-add-dialog.component';
+import { ProductEditDialogComponent } from './components/product-edit-dialog/product-edit-dialog.component';
+import { MatRadioModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     ProductsTableComponent,
-    ProductsAddComponent,
     RegisterComponent,
-    ProductsControllerComponent,
     HeaderComponent,
-    ProductStatsComponent,
-    ProductDialogComponent,
     ConfirmDialogComponent,
-    TransactionAddComponent,
+    ProductAddDialogComponent,
+    ProductEditDialogComponent,
+    TransactionAddComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +62,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatBottomSheetModule,
     MatSortModule,
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTooltipModule,
   ],
   providers: [
     UsersService,
@@ -78,6 +75,11 @@ import { MatRadioModule } from '@angular/material/radio';
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ProductDialogComponent, ConfirmDialogComponent, TransactionAddComponent]
+  entryComponents: [
+    ProductEditDialogComponent,
+    ProductAddDialogComponent,
+    ConfirmDialogComponent,
+    TransactionAddComponent
+  ]
 })
 export class AppModule {}
