@@ -43,7 +43,7 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     ProductsControllerComponent,
     HeaderComponent,
     ProductStatsComponent,
-    HoverControlDirective,
+    // HoverControlDirective,
     ProductDialogComponent,
     ConfirmDialogComponent
   ],

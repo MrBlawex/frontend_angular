@@ -8,20 +8,30 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel } from 'src/app/models/ConfirmDialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-products-table',
   templateUrl: './products-table.component.html',
-  styleUrls: ['./products-table.component.scss']
+  styleUrls: ['./products-table.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class ProductsTableComponent implements OnInit {
-  public displayedColumns: string[] = ['name', 'price', 'quantity', 'control'];
+  public displayedColumns: string[] = ['name', 'price', 'quantity'];
   public productsArr = new MatTableDataSource<ProductModel>();
+  public extandDetail: ProductModel;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(
+    // tslint:disable-next-line:variable-name
     private _productService: ProductService,
     public dialog: MatDialog
   ) {}
@@ -80,4 +90,6 @@ export class ProductsTableComponent implements OnInit {
   public refreshProductsList() {
     this._productService.updateProducts().subscribe();
   }
+
 }
+
