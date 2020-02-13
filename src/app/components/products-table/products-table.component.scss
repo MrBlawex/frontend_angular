@@ -17,6 +17,7 @@ table {
   max-height: 80vh;
   height: 80vh;
   overflow: auto;
+  border: 1px solid black;
 }
 
 .mat-column-name{
@@ -28,11 +29,6 @@ table {
   width: 20%;
   text-align: center;
 }
-
-.mat-column-control{
-
-}
-
 
 .btn-remove {
   color: rgba(255, 0, 0, 0.7);

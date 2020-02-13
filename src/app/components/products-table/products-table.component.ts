@@ -41,7 +41,7 @@ export class ProductsTableComponent implements OnInit {
 
   public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.productsArr.filter = filterValue.trim().toLowerCase();
+    this.productsArr.filter = filterValue.trim();
   }
 
   public removeProduct(product: ProductModel) {
