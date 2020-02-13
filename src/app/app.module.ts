@@ -8,7 +8,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthComponent } from "./components/auth/auth.component";
 import { ProductsTableComponent } from "./components/products-table/products-table.component";
-import { ProductsAddComponent } from "./components/products-add/products-add.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { UsersService } from "./user.service";
 
@@ -23,26 +22,25 @@ import { MatIconModule } from "@angular/material/icon";
 import { HeaderComponent } from "./components/header/header.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatCardModule } from "@angular/material/card";
-import { ProductStatsComponent } from "./components/product-stats/product-stats.component";
 import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatSortModule } from "@angular/material/sort";
 import { MatDialogModule } from "@angular/material/dialog";
-import { ProductDialogComponent } from "./components/product-dialog/product-dialog.component";
 import { ConfirmDialogComponent } from "./components/confirm-dialog/confirm-dialog.component";
 import { AuthInterceptor } from "./components/auth/auth.interceptor";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { ProductAddDialogComponent } from "./components/product-add-dialog/product-add-dialog.component";
+import { ProductEditDialogComponent } from "./components/product-edit-dialog/product-edit-dialog.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     ProductsTableComponent,
-    ProductsAddComponent,
     RegisterComponent,
     HeaderComponent,
-    ProductStatsComponent,
-    ProductDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ProductAddDialogComponent,
+    ProductEditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +71,10 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ProductDialogComponent, ConfirmDialogComponent]
+  entryComponents: [
+    ProductEditDialogComponent,
+    ProductAddDialogComponent,
+    ConfirmDialogComponent
+  ]
 })
 export class AppModule {}

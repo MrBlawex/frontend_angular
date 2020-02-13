@@ -26,7 +26,12 @@
     mat-raised-button
     (click)="onEdit()"
     color="primary"
-    [mat-dialog-close]="{id: data.id, name: data.name, price: data.price, quantity: data.quantity}"
+    [mat-dialog-close]="{
+      id: data.id,
+      name: data.name,
+      price: data.price,
+      quantity: data.quantity
+    }"
     [disabled]="form.invalid"
   >
     Изменить продукт

@@ -1,20 +1,17 @@
-import { Injectable } from '@angular/core';
-import { ProductModel } from '../models/Product';
-import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { tap, delay } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { ProductModel } from "../models/Product";
+import { HttpClient } from "@angular/common/http";
+import { Observable, BehaviorSubject } from "rxjs";
+import { tap, delay } from "rxjs/operators";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ProductService {
-
   public products$: BehaviorSubject<ProductModel[]> = new BehaviorSubject([]);
-  private readonly baseUrl = 'https://localhost:5001/api/Product';
+  private readonly baseUrl = "https://localhost:5001/api/Product";
 
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   public updateProducts() {
     return this.getProducts().pipe(
@@ -37,6 +34,9 @@ export class ProductService {
   }
 
   public editProduct(product: ProductModel) {
-    return this.http.put(`${this.baseUrl}/${product.id}`, {name: product.name, price: product.price});
+    return this.http.put(`${this.baseUrl}/${product.id}`, {
+      name: product.name,
+      price: product.price
+    });
   }
 }
