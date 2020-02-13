@@ -45,10 +45,6 @@ table {
   }
 }
 
-.heade-row th{
-  text-align: left;
-}
-
 .table-row td{
   border-bottom-width: 0;
   text-align: left;
@@ -61,4 +57,10 @@ tr.example-detail-row {
 .element-detail{
   overflow: hidden;
   display: flex;
+}
+
+.btn-controler{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
