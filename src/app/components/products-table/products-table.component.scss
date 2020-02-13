@@ -60,8 +60,11 @@ tr.example-detail-row {
   .btn-controler {
     width: 100%;
     display: flex;
-    justify-content: last baseline;
-    padding: 10px;
+    justify-content: right;
+    align-items: center;
+    button {
+      margin: 10px;
+    }
   }
 }
 
