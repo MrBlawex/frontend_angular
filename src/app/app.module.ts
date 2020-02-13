@@ -32,6 +32,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProductAddDialogComponent } from './components/product-add-dialog/product-add-dialog.component';
 import { ProductEditDialogComponent } from './components/product-edit-dialog/product-edit-dialog.component';
 import { MatRadioModule } from '@angular/material';
+import { TransactionTableComponent } from './components/transaction-table/transaction-table.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MatRadioModule } from '@angular/material';
     ConfirmDialogComponent,
     ProductAddDialogComponent,
     ProductEditDialogComponent,
-    TransactionAddComponent
+    TransactionAddComponent,
+    TransactionTableComponent
   ],
   imports: [
     BrowserModule,
