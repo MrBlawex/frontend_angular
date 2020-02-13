@@ -15,7 +15,8 @@ export class TransactionService {
     constructor(private http: HttpClient) {}
 
     public getTransactionList(product: ProductModel) {
-        return this.http.get<TransactionListModel[]>('').pipe(
+        const id = product.id;
+        return this.http.get<TransactionListModel[]>(`https://localhost:5001/api/ProductTransaction/${id}`).pipe(
             tap(data => this.transactionData$.next(data))
         );
     }

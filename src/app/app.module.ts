@@ -81,7 +81,8 @@ import { TransactionTableComponent } from './components/transaction-table/transa
     ProductEditDialogComponent,
     ProductAddDialogComponent,
     ConfirmDialogComponent,
-    TransactionAddComponent
+    TransactionAddComponent,
+    TransactionTableComponent
   ]
 })
 export class AppModule {}

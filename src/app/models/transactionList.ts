@@ -1,9 +1,9 @@
 import { ProductModel } from './Product';
 
 export interface TransactionListModel {
-    type: number;
-    amount: number;
-    date: Date;
+    operation: number;
+    quantity: number;
+    date: string;
     product: ProductModel;
-    user: string;
+    userName: string;
 }

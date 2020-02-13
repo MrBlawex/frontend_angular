@@ -19,6 +19,8 @@ import { ConfirmDialogModel } from 'src/app/models/ConfirmDialog';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { TransactionPost } from 'src/app/models/transactionPost';
 import { TransactionAddComponent } from '../transaction-add/transaction-add.component';
+import { TransactionTableComponent } from '../transaction-table/transaction-table.component';
+import { TransactionListModel } from 'src/app/models/transactionList';
 
 @Component({
   selector: 'app-products-table',
@@ -72,9 +74,7 @@ export class ProductsTableComponent implements OnInit {
 
   public removeProduct(product: ProductModel) {
     const message = `Are you sure you want to do this?`;
-
     const dialogData = new ConfirmDialogModel('Confirm Edit', message);
-
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: '400px',
       data: dialogData
@@ -127,13 +127,22 @@ export class ProductsTableComponent implements OnInit {
 
   public addTransaction(product: ProductModel) {
     const dialogRef = this.dialog.open(TransactionAddComponent);
-
     dialogRef.afterClosed().subscribe(
       (data: TransactionPost) => {
         if (data !== null) {
           this.transactionService.addTransaction(product, data).subscribe();
-          console.log(data);
         }
+      }
+    );
+  }
+
+  public createTransactionList(product: ProductModel) {
+    this.transactionService.getTransactionList(product).subscribe(
+      (value) => {
+        console.log(value);
+        this.dialog.open(TransactionTableComponent, {
+        data: value
+        });
       }
     );
   }
