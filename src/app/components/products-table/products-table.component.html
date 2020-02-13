@@ -1,35 +1,88 @@
 <div>
   <div class="table-container">
     <table mat-table [dataSource]="productsArr" multiTemplateDataRows matSort>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header-row"></tr>
-      <tr mat-row 
-          appHoverControl 
-          matRipple
-          class="table-row" 
-          *matRowDef="let row; columns: displayedColumns;"
-          (click)="extandDetail = row">
-      </tr>
-      <tr mat-row *matRowDef="let row; columns: ['extandDetail']" class="example-detail-row"></tr>
+      <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns"
+        class="header-row"
+      ></tr>
+      <tr
+        mat-row
+        appHoverControl
+        matRipple
+        class="table-row"
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="extandDetail = row"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: ['extandDetail']"
+        class="example-detail-row"
+      ></tr>
 
-      <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
-        <td mat-cell *matCellDef="let element">{{element[column]}}</td>
+      <ng-container
+        matColumnDef="{{ column }}"
+        *ngFor="let column of displayedColumns"
+      >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ column | uppercase }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
       </ng-container>
 
       <ng-container matColumnDef="extandDetail">
-        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-          <div class="element-detail" [@detailExpand]="element == extandDetail ? 'expanded' : 'collapsed'">
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [attr.colspan]="displayedColumns.length"
+        >
+          <div
+            class="element-detail"
+            [@detailExpand]="element == extandDetail ? 'expanded' : 'collapsed'"
+          >
+            <div>
+              <ul>
+                <li>Name: {{ element.name }}</li>
+                <li>Price: {{ element.price }}</li>
+                <li>Quantity: {{ element.quantity }}</li>
+                <li>
+                  Common price:
+                  {{ element.quantity * element.price | number: "1.0-2" }}
+                </li>
+              </ul>
+            </div>
             <div class="btn-controler">
-              <button mat-raised-button color="accent" (click)="editProduct(element)">Edit</button>
-              <button mat-raised-button color="accent" (click)="removeProduct(element)">Delete</button>
-              <button mat-raised-button color="accent" >Add transaction</button>
-              <button mat-raised-button color="accent" >Transaction log</button>
+              <button
+                mat-icon-button
+                matTooltip="Edit Product"
+                (click)="editProduct(element)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                matTooltip="Remove Product"
+                (click)="removeProduct(element)"
+                class="btn-remove"
+              >
+                <mat-icon>clear</mat-icon>
+              </button>
+              <button mat-icon-button matTooltip="Add transaction">
+                <mat-icon>library_add</mat-icon>
+              </button>
+              <button mat-icon-button matTooltip="Transaction list">
+                <mat-icon>library_books</mat-icon>
+              </button>
             </div>
           </div>
         </td>
       </ng-container>
     </table>
   </div>
-
-  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  <div class="table-footer">
+    <button mat-mini-fab>
+      <mat-icon>add</mat-icon>
+    </button>
+    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+  </div>
 </div>
