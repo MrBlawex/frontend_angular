@@ -1,0 +1,17 @@
+<form [formGroup]="transactionAddForm" class="transaction-from">
+    <div class="input-info">
+        <mat-form-field class="amount-input"> 
+            <input matInput type="number" formControlName="quantity">
+        </mat-form-field>
+        <mat-radio-group formControlName="operation" class="radio-group">
+            <mat-radio-button class="radio-zero" value=0>Сoming</mat-radio-button>
+            <mat-radio-button class="radio-one" value=1>Сonsumption</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="transactionAddForm-actions">
+        <div class="transactionAddForm-group">
+            <button mat-raised-button color="accent" class="transactionAddForm-submit" (click)="close(transactionAddForm.value)">Save</button>
+            <button mat-raised-button color="warn" class="transactionAddForm-cancel" (click)="close(null)">Cancel</button>
+        </div>
+    </div>
+</form>

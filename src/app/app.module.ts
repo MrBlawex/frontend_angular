@@ -10,6 +10,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { ProductsTableComponent } from './components/products-table/products-table.component';
 import { ProductsAddComponent } from './components/products-add/products-add.component';
 import { RegisterComponent } from './components/register/register.component';
+import { TransactionAddComponent } from './components/transaction-add/transaction-add.component';
 import { UsersService } from './user.service';
 
 import { ProductService } from './services/product.service';
@@ -32,6 +33,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { AuthInterceptor } from './components/auth/auth.interceptor';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -43,9 +45,9 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     ProductsControllerComponent,
     HeaderComponent,
     ProductStatsComponent,
-    // HoverControlDirective,
     ProductDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    TransactionAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     MatCardModule,
     MatBottomSheetModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule
   ],
   providers: [
     UsersService,
@@ -75,6 +78,6 @@ import { AuthInterceptor } from './components/auth/auth.interceptor';
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ProductDialogComponent, ConfirmDialogComponent]
+  entryComponents: [ProductDialogComponent, ConfirmDialogComponent, TransactionAddComponent]
 })
 export class AppModule {}

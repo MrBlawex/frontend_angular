@@ -8,7 +8,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel } from 'src/app/models/ConfirmDialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { TransactionAddComponent } from '../transaction-add/transaction-add.component';
+import { TransactionService } from 'src/app/services/transaction.service';
+import { TransactionPost } from 'src/app/models/transactionPost';
 
 @Component({
   selector: 'app-products-table',
@@ -33,7 +36,8 @@ export class ProductsTableComponent implements OnInit {
   constructor(
     // tslint:disable-next-line:variable-name
     private _productService: ProductService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public transactionService: TransactionService
   ) {}
 
   ngOnInit() {
@@ -91,5 +95,17 @@ export class ProductsTableComponent implements OnInit {
     this._productService.updateProducts().subscribe();
   }
 
+  public addTransaction(product: ProductModel) {
+    const dialogRef = this.dialog.open(TransactionAddComponent);
+
+    dialogRef.afterClosed().subscribe(
+      (data: TransactionPost) => {
+        if (data !== null) {
+          this.transactionService.addTransaction(product, data).subscribe();
+          console.log(data);
+        }
+      }
+    );
+  }
 }
 

@@ -1,0 +1,27 @@
+.transaction-from{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.amount-input{
+    width: 80px;
+    margin-right: 15px;
+}
+
+.radio-group{
+    margin-top: 24px;
+}
+
+.radio-one{
+    margin-left: 15px;
+}
+
+.transactionAddForm-submit{
+    width: 100px;
+    margin-right: 15px;
+}
+
+.transactionAddForm-cancel{
+    width: 80px;
+}

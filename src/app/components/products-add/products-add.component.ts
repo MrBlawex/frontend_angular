@@ -13,6 +13,7 @@ export class ProductsAddComponent implements OnInit {
 
   form: FormGroup;
 
+  // tslint:disable-next-line:variable-name
   constructor(private _productService: ProductService) { }
 
   ngOnInit() {
