@@ -1,6 +1,6 @@
 mat-card {
-  width: 50%;
-  margin: 10px;
+  margin-top: 10px;
+  border: 1px solid black;
 }
 
 table {
@@ -13,6 +13,14 @@ table {
   height: 80vh;
   overflow: auto;
   border: 1px solid black;
+}
+
+.header-row{
+  cursor: pointer;
+}
+
+.header-row:hover{
+  background: red;
 }
 
 .mat-column-name {
@@ -70,7 +78,7 @@ tr.example-detail-row {
   display: flex;
 
   button {
-    margin: 5px;
+    margin: 10px;
   }
 
   mat-paginator {

@@ -40,8 +40,13 @@ export class ProductEditDialogComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
-      if (dialogResult) {
-        this.productDialog.close();
+      if (dialogResult === true) {
+        this.productDialog.close({
+          id: this.data.id,
+          name: this.data.name,
+          price: this.data.price,
+          quantity: this.data.quantity
+        });
       }
     });
   }

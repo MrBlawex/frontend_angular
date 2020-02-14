@@ -1,13 +1,13 @@
 <div>
   <div class="table-container">
-    <table mat-table [dataSource]="productsArr" multiTemplateDataRows matSort>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header-row"></tr>
-      <tr mat-row appHoverControl matRipple class="table-row" *matRowDef="let row; columns: displayedColumns"
+    <table mat-table [dataSource]="productsArr" multiTemplateDataRows>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row matRipple class="table-row" *matRowDef="let row; columns: displayedColumns"
         (click)="extandDetail = row"></tr>
       <tr mat-row *matRowDef="let row; columns: ['extandDetail']" class="example-detail-row"></tr>
 
       <ng-container matColumnDef="{{ column }}" *ngFor="let column of displayedColumns">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <th mat-header-cell *matHeaderCellDef class="header-row" (click)="sortBy(column)">
           {{ column | uppercase }}
         </th>
         <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
@@ -18,12 +18,7 @@
           <div class="element-detail" [@detailExpand]="element == extandDetail ? 'expanded' : 'collapsed'">
             <div class="product-list"> 
               <ul>
-                <li>Name: {{ element.name }}</li>
-                <li>Price: {{ element.price }}</li>
-                <li>Quantity: {{ element.quantity }}</li>
-                <li>
-                  Common price: {{ element.quantity * element.price | number: "1.0-2" }}
-                </li>
+                Total price: {{ element.quantity * element.price | number: "1.0-2" }}
               </ul>
             </div>
             <div class="btn-controler">
@@ -45,12 +40,10 @@
       </ng-container>
     </table>
   </div>
+ <mat-card>
   <div class="table-footer">
-    <button mat-mini-fab (click)="addProduct()">
-      <mat-icon>add</mat-icon>
-    </button>
-    <mat-paginator [pageSizeOptions]="[5, 10, 50, 100]" (page)="pageEmmiter($event)"></mat-paginator>
+    <button mat-raised-button color="primary" (click)="addProduct()">Add new product   </button>
+    <mat-paginator [pageSizeOptions]="[5, 10, 50, 100]" (page)="getNextPage($event)"></mat-paginator>
   </div>
+ </mat-card>
 </div>
-<p>Current paga: {{productsArr.paginator.pageIndex}}</p>
-<p>Has next page: {{productsArr.paginator.hasNextPage()}}</p>

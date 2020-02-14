@@ -19,7 +19,7 @@ export class ProductAddDialogComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       Name: new FormControl('', Validators.required),
-      Price: new FormControl('', [Validators.required, Validators.min(0)])
+      Price: new FormControl('', [Validators.required, Validators.min(0), Validators.max(10000)])
     });
   }
 
@@ -28,6 +28,6 @@ export class ProductAddDialogComponent implements OnInit {
   }
 
   onDismiss(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 }

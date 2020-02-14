@@ -1,3 +1,25 @@
-.transaction-table{
-    min-width: 650px;
+.transaction-table {
+  min-width: 650px;
+  width: 100%;
+  position: relative;
+  overflow: auto;
+}
+
+mat-card {
+  margin-top: 10px;
+}
+
+.mat-header-row {
+  width: 100%;
+}
+
+.table-container {
+  overflow: auto;
+  height: 80vh;
+}
+
+.table-footer {
+  mat-paginator {
+    width: 100%;
+  }
 }
