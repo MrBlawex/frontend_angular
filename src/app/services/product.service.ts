@@ -25,6 +25,10 @@ export class ProductService {
     return this.http.get<ProductModel[]>(`${this.baseUrl}`);
   }
 
+  public lazyLoading(setting: any): Observable<ProductModel[]> {
+    return this.http.post<ProductModel[]>(`${this.baseUrl}/lazy`, setting);
+  }
+
   public addProduct(product: ProductModel) {
     return this.http.post(`${this.baseUrl}`, product);
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
@@ -144,6 +144,17 @@ export class ProductsTableComponent implements OnInit {
         data: value
         });
       }
+    );
+  }
+
+  public pageEmmiter(event: PageEvent) {
+    console.log(event);
+
+    if (!this.productsArr.paginator.hasNextPage()) {
+      console.log('Load next data stream');
+    }
+    this._productService.lazyLoading({page: event.pageIndex + 1, perPage: event.pageSize, sortBy: 2}).subscribe(
+      data => console.log(data)
     );
   }
 }

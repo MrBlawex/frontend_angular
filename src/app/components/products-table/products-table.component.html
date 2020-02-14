@@ -49,6 +49,8 @@
     <button mat-mini-fab (click)="addProduct()">
       <mat-icon>add</mat-icon>
     </button>
-    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 50, 100]" (page)="pageEmmiter($event)"></mat-paginator>
   </div>
 </div>
+<p>Current paga: {{productsArr.paginator.pageIndex}}</p>
+<p>Has next page: {{productsArr.paginator.hasNextPage()}}</p>
